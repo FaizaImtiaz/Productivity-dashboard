@@ -127,17 +127,23 @@ function motivationalQuote() {
     var motivationAuthor = document.querySelector('.motivation-3 h2')
 
     async function fetchQuote() {
-        let response = await fetch('https://api.quotable.io/random')
-        let data = await response.json()
+        try {
+            let response = await fetch('https://dummyjson.com/quotes/random')
+            let data = await response.json()
 
-        motivationQuoteContent.innerHTML = data.content
-        motivationAuthor.innerHTML = data.author
+            motivationQuoteContent.innerHTML = data.quote
+            motivationAuthor.innerHTML = data.author
+        } catch (error) {
+            console.log("Error fetching quote:", error)
+        }
     }
 
     fetchQuote()
 }
 
 motivationalQuote()
+
+
 
 
 function pomodoroTimer() {
@@ -223,7 +229,7 @@ function weatherFunctionality() {
 
 
     // I have removed API key for security purpose
-    var apiKey = null
+    var apiKey = '1c9082c1db58409b81d62908261302'
     var city = 'Bhopal'
 
 
@@ -231,6 +237,7 @@ function weatherFunctionality() {
     var header1Time = document.querySelector('.header1 h1')
     var header1Date = document.querySelector('.header1 h2')
     var header2Temp = document.querySelector('.header2 h2')
+    var header1City = document.querySelector('.header1 h4')
     var header2Condition = document.querySelector('.header2 h4')
     var precipitation = document.querySelector('.header2 .precipitation')
     var humidity = document.querySelector('.header2 .humidity')
@@ -241,7 +248,7 @@ function weatherFunctionality() {
     async function weatherAPICall() {
         var response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
         data = await response.json()
-
+        header1City.innerHTML = data.location.name
         header2Temp.innerHTML = `${data.current.temp_c}°C`
         header2Condition.innerHTML = `${data.current.condition.text}`
         wind.innerHTML = `Wind: ${data.current.wind_kph} km/h`
