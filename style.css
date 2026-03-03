@@ -1,7 +1,7 @@
 :root {
-    --color: #6f834a;
+    --pri: #6f834a;
     --sec: #b7d883;
-    --bg: #d6e6b4;
+    --tri1: #d6e6b4;
     --tri2: #F6F0D7;
     --red: rgb(250, 108, 108);
     --green: rgb(95, 245, 187);
@@ -32,7 +32,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: aeonik;
-    color: var(--color);
+    color: var(--pri);
 
 }
 
@@ -42,7 +42,7 @@ body {
     width: 100%;
     overflow: hidden;
     font-size: 16px;
-    background-color: var(--sec);
+    background-color: var(--tri1);
     overflow-x: hidden!important;
 }
 
@@ -132,6 +132,7 @@ header .header2 h3 {
     cursor: pointer;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
     margin-bottom: 3%;
+
 }
 
 .elem img {
@@ -186,7 +187,7 @@ header .header2 h3 {
 }
 
 .todo-list-fullpage .todo-container {
-    height: 70%;
+    height: auto;
     width: 100%;
     margin-top: 4%;
     display: flex;
@@ -214,7 +215,7 @@ header .header2 h3 {
     width: 100%;
     font-size: 2rem;
     border-radius: 5px;
-    background-color: var(--pri);
+    background-color: var(--tri2);
     /* color: var(--sec); */
     border: none;
     outline: none;
@@ -226,7 +227,7 @@ header .header2 h3 {
     width: 100%;
     padding-top: 5%;
     font-size: 1.5rem;
-    background-color: var(--pri);
+    background-color: var(--tri2);
     /* color: var(--color); */
     border-radius: 5px;
     font-weight: 500;
@@ -241,7 +242,7 @@ header .header2 h3 {
     font-size: 2rem;
     background-color: var(--tri2);
     border-radius: 5px;
-    border: 2px solid var(--color);
+    border: 2px solid var(--pri);
     font-weight: 700;
     outline: none;
     /* margin-bottom: 20px; */
@@ -270,7 +271,7 @@ header .header2 h3 {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background-color: var(--pri);
+    background-color: var(--tri1);
     margin-bottom: 3%;
     border-radius: 10px;
 }
@@ -328,7 +329,7 @@ header .header2 h3 {
 }
 
 .mark-imp label {
-    font-size: 21px;
+    font-size: 1rem;
 
 }
 
@@ -364,7 +365,7 @@ header .header2 h3 {
     position: absolute;
     top: 12%;
     left: 2%;
-    color: var(--tri1);
+    color: var(--pri);
     font-size: 16px;
 }
 
@@ -417,7 +418,7 @@ header .header2 h3 {
     background-color: var(--tri1);
     padding: 2%;
     border-radius: 30px;
-    border: 6px solid var(--tri2);
+    border: 6px solid var(--pri);
 
 }
 
@@ -447,7 +448,7 @@ header .header2 h3 {
 .motivation-2 h1 {
     font-size: 65px;
     font-weight: 700;
-    color: var(--sec);
+    color: var(--pri);
 
 }
 
@@ -536,7 +537,7 @@ nav {
     justify-content: space-between;
     padding: 1%;
     border-radius: 15px;
-    border: #6f834a 2px solid;
+    border: var(--pri) 2px solid;
 
 }
 

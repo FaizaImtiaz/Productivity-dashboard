@@ -147,81 +147,40 @@ motivationalQuote()
 
 
 function pomodoroTimer() {
+    const timer = document.querySelector('.pomo-timer h1');
+    const startBtn = document.querySelector('.pomo-timer .start-timer');
+    const pauseBtn = document.querySelector('.pomo-timer .pause-timer');
+    const resetBtn = document.querySelector('.pomo-timer .reset-timer');
 
+    let totalSeconds = 10 * 60 * 60; // 10 hours
+    let interval = null;
 
-    let timer = document.querySelector('.pomo-timer h1')
-    var startBtn = document.querySelector('.pomo-timer .start-timer')
-    var pauseBtn = document.querySelector('.pomo-timer .pause-timer')
-    var resetBtn = document.querySelector('.pomo-timer .reset-timer')
-    var session = document.querySelector('.pomodoro-fullpage .session')
-    var isWorkSession = true
+    const update = () => {
+        const h = Math.floor(totalSeconds / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = totalSeconds % 60;
+        timer.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    };
 
-    let totalSeconds = 25 * 60
-    let timerInterval = null
+    const start = () => {
+        if (interval) return;
+        interval = setInterval(() => {
+            if (totalSeconds-- > 0) update();
+            else clearInterval(interval);
+        }, 1000);
+    };
 
-    function updateTimer() {
-        let minutes = Math.floor(totalSeconds / 60)
-        let seconds = totalSeconds % 60
+    const pause = () => { clearInterval(interval); interval = null; };
+    const reset = () => { clearInterval(interval); interval = null; totalSeconds = 10*60*60; update(); };
 
-        timer.innerHTML = `${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')}`
-    }
+    startBtn.addEventListener('click', start);
+    pauseBtn.addEventListener('click', pause);
+    resetBtn.addEventListener('click', reset);
 
-    function startTimer() {
-        clearInterval(timerInterval)
-
-        if (isWorkSession) {
-
-            timerInterval = setInterval(function () {
-                if (totalSeconds > 0) {
-                    totalSeconds--
-                    updateTimer()
-                } else {
-                    isWorkSession = false
-                    clearInterval(timerInterval)
-                    timer.innerHTML = '05:00'
-                    session.innerHTML = 'Take a Break'
-                    session.style.backgroundColor = 'var(--blue)'
-                    totalSeconds = 5 * 60
-                }
-            }, 10)
-        } else {
-
-
-            timerInterval = setInterval(function () {
-                if (totalSeconds > 0) {
-                    totalSeconds--
-                    updateTimer()
-                } else {
-                    isWorkSession = true
-                    clearInterval(timerInterval)
-                    timer.innerHTML = '25:00'
-                    session.innerHTML = 'Work Session'
-                    session.style.backgroundColor = 'var(--green)'
-                    totalSeconds = 25 * 60
-                }
-            }, 10)
-        }
-
-    }
-
-    function pauseTimer() {
-        clearInterval(timerInterval)
-    }
-    function resetTimer() {
-        totalSeconds = 25 * 60
-        clearInterval(timerInterval)
-        updateTimer()
-
-    }
-    startBtn.addEventListener('click', startTimer)
-    pauseBtn.addEventListener('click', pauseTimer)
-    resetBtn.addEventListener('click', resetTimer)
-
-
-
+    update();
 }
 
-pomodoroTimer()
+pomodoroTimer();
 
 
 
@@ -230,7 +189,7 @@ function weatherFunctionality() {
 
     // I have removed API key for security purpose
     var apiKey = '1c9082c1db58409b81d62908261302'
-    var city = 'Bhopal'
+    var city = 'Pakistan'
 
 
 
@@ -295,7 +254,7 @@ weatherFunctionality()
 
 
 
-//hello world 
+
 function changeTheme() {
 
     var theme = document.querySelector('.theme')
@@ -305,22 +264,22 @@ function changeTheme() {
     theme.addEventListener('click', function () {
 
         if (flag == 0) {
-            rootElement.style.setProperty('--pri', '#F8F4E1')
-            rootElement.style.setProperty('--sec', '#222831')
-            rootElement.style.setProperty('--tri1', '#948979')
-            rootElement.style.setProperty('--tri2', '#393E46')
+            rootElement.style.setProperty('--pri', '#3A0519')
+            rootElement.style.setProperty('--sec', '#670D2F')
+            rootElement.style.setProperty('--tri1', '#A53860')
+            rootElement.style.setProperty('--tri2', '#EF88AD')
             flag = 1
         } else if (flag == 1) {
-            rootElement.style.setProperty('--pri', '#F1EFEC')
-            rootElement.style.setProperty('--sec', '#030303')
-            rootElement.style.setProperty('--tri1', '#D4C9BE')
-            rootElement.style.setProperty('--tri2', '#123458')
+            rootElement.style.setProperty('--pri', '#213448')
+            rootElement.style.setProperty('--sec', '#547792')
+            rootElement.style.setProperty('--tri1', '#94B4C1')
+            rootElement.style.setProperty('--tri2', '#EAE0CF')
             flag = 2
         } else if (flag == 2) {
-            rootElement.style.setProperty('--pri', '#F8F4E1')
-            rootElement.style.setProperty('--sec', '#381c0a')
-            rootElement.style.setProperty('--tri1', '#FEBA17')
-            rootElement.style.setProperty('--tri2', '#74512D')
+            rootElement.style.setProperty('--pri', '#543310')
+            rootElement.style.setProperty('--sec', '#74512D')
+            rootElement.style.setProperty('--tri1', '#AF8F6F')
+            rootElement.style.setProperty('--tri2', '#F8F4E1')
             flag = 0
         }
 
